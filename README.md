@@ -1,60 +1,62 @@
-# Implementation-of-Linear-Regression-Using-Gradient-Descent
+# Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored
 
 ## AIM:
-To write a program to implement the linear regression using gradient descent.
+To write a program to implement the simple linear regression model for predicting the marks scored.
 
 ## Equipments Required:
 1. Hardware – PCs
 2. Anaconda – Python 3.7 Installation / Moodle-Code Runner
 
 ## Algorithm
-1. Use the standard libraries in python for finding linear regression.
-2. Set variables for assigning dataset values.
-3. Import linear regression from sklearn.
-4. Assign the points for representing in the graph
-5. Predict the regression for marks by using the representation of the graph.
-6. Compare the graphs and hence we obtained the linear regression for the given datas.
-
+1. To implement the linear regression using the standard libraries in the python.
+2. Use slicing function() for the x,y values.
+3. Using sklearn library import training , testing and linear regression modules.
+4. Predict the value for the y.
+5. Using matplotlib library plot the graphs.
+6. Use xlabel for hours and ylabel for scores.
+7. End the porgram.
 ## Program:
 ```
 /*
-Program to implement the linear regression using gradient descent.
-Developed by: Swathika.G
+Program to implement the simple linear regression model for predicting the marks scored.
+Developed by: Swathika G
 RegisterNumber:  212221230113
 */
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
-dataset = pd.read_csv('/content/student_scores - student_scores.csv')
-dataset.head()
-dataset.tail()
-x  = dataset.iloc[:,:-1].values 
-y  = dataset.iloc[:,1].values
+df=pd.read_csv('/content/student_scores - student_scores.csv')
+df.head()
+X=df.iloc[:,:-1].values
+X
+y=df.iloc[:,1].values
+y
 from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 1/3,random_state=0)
-regressor = LinearRegression()
-regressor.fit(x_train,y_train)
-y_pred=regressor.predict(x_test)
-plt.scatter(x_train,y_train,color = "green")
-plt.plot(x_train,regressor.predict(x_train),color= "purple")
-plt.title("hours Vs scores(train)")
-plt.xlabel("hours")
-plt.ylabel("scores")
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=1/3,random_state=0)
+from sklearn.linear_model import LinearRegression
+regressor=LinearRegression()
+regressor.fit(X_train,y_train)
+y_pred=regressor.predict(X_test)
+y_pred
+y_test
+plt.scatter(X_train,y_train,color='violet')
+plt.plot(X_train,regressor.predict(X_train),color="black")
+plt.title("h vs s (Training Set)")
+plt.xlabel("Hours")
+plt.ylabel("Scores")
 plt.show()
-plt.scatter(x_test,y_test,color = "blue")
-plt.plot(x_test,regressor.predict(x_test),color= "black")
-plt.title("hours Vs scores(train)")
-plt.xlabel("hours")
-plt.ylabel("scores")
+plt.scatter(X_test,y_test,color='purple')
+plt.plot(X_test,regressor.predict(X_test),color="black")
+plt.title("h vs s (Testing Set)")
+plt.xlabel("Hours")
+plt.ylabel("Scores")
 plt.show()
-
 ```
 
 ## Output:
-![output](mlpic1.png)
+![output](ml222.png)
 
 
 ## Result:
-Thus the program to implement the linear regression using gradient descent is written and verified using python programming.
+Thus the program to implement the simple linear regression model for predicting the marks scored is written and verified using python programming.
